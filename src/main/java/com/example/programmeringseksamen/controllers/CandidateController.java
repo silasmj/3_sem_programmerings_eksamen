@@ -22,6 +22,7 @@ public class CandidateController {
     public List<Candidate> getCandidates() {
         return candidates.findAll();
     }
+
     @GetMapping("/candidates/{partyName}")
     public List<Candidate> getCandidatesByParty(@PathVariable String partyName) {
         return candidates.findCandidatesByParty_PartyName(partyName);
