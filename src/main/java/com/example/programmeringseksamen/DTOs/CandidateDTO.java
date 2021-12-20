@@ -2,18 +2,18 @@ package com.example.programmeringseksamen.DTOs;
 
 import com.example.programmeringseksamen.models.Candidate;
 
-public class CandidateEditDTO {
+public class CandidateDTO {
     public String partiName;
     public boolean failed;
     public String errorMessage;
     public Candidate candidate;
 
-    public CandidateEditDTO(Candidate candidate, String partiName) {
+    public CandidateDTO(Candidate candidate, String partiName) {
         this.candidate = candidate;
         this.partiName = partiName;
     }
 
-    public CandidateEditDTO(String errorMessage) {
+    public CandidateDTO(String errorMessage) {
         this.errorMessage = errorMessage;
         this.failed = true;
     }

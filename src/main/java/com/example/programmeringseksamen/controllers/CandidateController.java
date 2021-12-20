@@ -1,6 +1,6 @@
 package com.example.programmeringseksamen.controllers;
 
-import com.example.programmeringseksamen.DTOs.CandidateEditDTO;
+import com.example.programmeringseksamen.DTOs.CandidateDTO;
 import com.example.programmeringseksamen.models.Candidate;
 import com.example.programmeringseksamen.repositories.CandidateRepository;
 import com.example.programmeringseksamen.repositories.PartyRepository;
@@ -29,13 +29,13 @@ public class CandidateController {
     }
 
     @PostMapping("/candidates/{partyName}")
-    public CandidateEditDTO addCandidate(@PathVariable String partyName, @RequestBody Candidate newCandidate) {
+    public CandidateDTO addCandidate(@PathVariable String partyName, @RequestBody Candidate newCandidate) {
         return parties.findById(partyName).map(party -> {
             newCandidate.setId(null);
             newCandidate.setParty(party);
             Candidate createdCandidate = candidates.save(newCandidate);
-            return new CandidateEditDTO(createdCandidate, newCandidate.getParty().getPartyName());
-        }).orElse(new CandidateEditDTO("Did not find party by name"));
+            return new CandidateDTO(createdCandidate, newCandidate.getParty().getPartyName());
+        }).orElse(new CandidateDTO("Did not find party by name"));
     }
 
     @DeleteMapping("/candidates/{id}")
@@ -43,14 +43,14 @@ public class CandidateController {
         candidates.deleteById(id);
     }
     @PatchMapping("/candidates/{id}")
-    public CandidateEditDTO editCandidate(@PathVariable Long id, @RequestBody Candidate candidateToEdit) {
+    public CandidateDTO editCandidate(@PathVariable Long id, @RequestBody Candidate candidateToEdit) {
         return candidates.findById(id).map(foundCandidate -> {
             if (candidateToEdit.getName() != null) foundCandidate.setName(candidateToEdit.getName());
             if (candidateToEdit.getParty() != null && foundCandidate.getParty().getPartyName() != null) foundCandidate.setParty(candidateToEdit.getParty());
 
             Candidate candidateUpdate = candidates.save(foundCandidate);
-            return new CandidateEditDTO(candidateUpdate, candidateToEdit.getParty().getPartyName());
-        }).orElse(new CandidateEditDTO("Candidate not found"));
+            return new CandidateDTO(candidateUpdate, candidateToEdit.getParty().getPartyName());
+        }).orElse(new CandidateDTO("Candidate not found"));
     }
 
 }
