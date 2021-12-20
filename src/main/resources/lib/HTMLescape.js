@@ -1,7 +1,8 @@
 function escapeHTML(string) {
     if (!string) return "";
 
-    return string.replaceAll(`&`, "&amp;")
+    return string
+        .replaceAll(`&`, "&amp;")
         .replaceAll(`>`, "&gt;")
         .replaceAll(`<`, "&lt;")
         .replaceAll(`"`, "&quot;")

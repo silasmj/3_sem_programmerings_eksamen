@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../lib/global.js"></script>
+    <script src="../lib/HTMLescape.js"></script>
+    <title>Frontpage</title>
+</head>
+<body>
+<a href="../result/result.html">
+    <button>Go to the result of the election</button>
+</a>
+
+<h1>List of all Candidates:</h1>
+    <select name="candidates" id="parties-dropdown">
+        <option value="All">All</option>
+        <option value="Socialdemokratiet">Socialdemokratiet</option>
+        <option value="Radikale Venstre">Radikale Venstre</option>
+        <option value="Det Konservative Folkeparti">Det Konservative Folkeparti</option>
+        <option value="Nye Borgerlige">Nye Borgerlige</option>
+        <option value="Socialistisk Folkeparti">Socialistisk Folkeparti</option>
+        <option value="Liberal Alliance">Liberal Alliance</option>
+        <option value="Dansk Folkeparti">Dansk Folkeparti</option>
+        <option value="Venstre">Venstre</option>
+        <option value="Feministisk Initiativ">Feministisk Initiativ</option>
+        <option value="Enhedslisten">Enhedslisten</option>
+    </select>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Party Name</th>
+                <th>Other actions</th>
+            </tr>
+        </thead>
+        <tbody id="candidate-tbody">
+
+        </tbody>
+    </table>
+
+<div class="container">
+    <button id="expand-candidate-form">New Candidate ➕</button>
+    <div id="create-candidate-form"></div>
+</div>
+
+<script src="editDeleteCandidate.js"></script>
+<script src="createCandidate.js"></script>
+<script src="frontpage.js"></script>
+</body>
+</html>
